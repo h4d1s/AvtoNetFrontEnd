@@ -1,0 +1,11 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><button class="page-link" href="#" (click)="changePage($event, currentPage - 1)" [disabled]="currentPage === 1">Previous</button></li>
+        
+        <li class="page-item"><a class="page-link" href="#" (click)="changePage($event, currentPage - 1)" *ngIf="currentPage - 1 !== 0 && currentPage - 1 <= totalPages">{{ currentPage - 1 }}</a></li>
+        <li class="page-item active"><a class="page-link" href="#" (click)="changePage($event, currentPage)" *ngIf="currentPage <= totalPages">{{ currentPage }}</a></li>
+        <li class="page-item"><a class="page-link" href="#" (click)="changePage($event, currentPage + 1)" *ngIf="currentPage + 1 <= totalPages">{{ currentPage + 1 }}</a></li>
+        
+        <li class="page-item"><button class="page-link" href="#" (click)="changePage($event, currentPage + 1)" [disabled]="currentPage === totalPages">Next</button></li>
+    </ul>
+</nav>

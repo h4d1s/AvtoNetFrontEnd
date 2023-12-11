@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-3">
+            <div class="row g-1">
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.yearMin" (click)="filters.yearMin = null; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Year min: {{ filters.yearMin }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.yearMax" (click)="filters.yearMax = null; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Year max: {{ filters.yearMax }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.kmMax" (click)="filters.kmMax = null; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Kilometers max: {{ filters.kmMax }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.kmMin" (click)="filters.kmMin = null; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Kilometers min: {{ filters.kmMin }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.priceMax" (click)="filters.priceMax = null; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Price max: {{ filters.priceMax }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.priceMin" (click)="filters.priceMin = null; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Price min: {{ filters.priceMin }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="brandName" (click)="filters.brandId = null; this.brandName = ''; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Brand: {{ brandName }}
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" *ngIf="modelName" (click)="filters.modelId = null; this.modelName = ''; removeFilter()">
+                    <i class="bi bi-x me-1"></i>
+                    Model: {{ modelName }}
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-9">
+            <p>{{ totalItems }} Offers</p>
+            <div class="row row-cols-1 g-4 mb-4">
+                <div class="col" *ngFor="let listing of listings">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ listing.brand }} - {{ listing.model }}
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{{ listing.imagePath }}" class="img-fluid" />
+                                </div>
+                                <div class="col-md-4">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <th>Year of production</th>
+                                                <td>{{ listing.yearOfProduction }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mileage</th>
+                                                <td>{{ listing.mileage }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Fuel Type</th>
+                                                <td>{{ listing.fuelType }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Gearbox</th>
+                                                <td>{{ listing.gearbox }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-4 text-center">
+                                        <h5 class="card-title">{{ listing.price | currency: 'EUR' }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <a [routerLink]="['/listings', listing.id]" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <app-pagination
+                [currentPage]="currentPage"
+                [itemsPerPage]="itemsPerPage"
+                [totalItems]="totalItems"
+                (pageChanged)="onPageChange($event)"
+                *ngIf="totalItems > itemsPerPage"
+            ></app-pagination>
+        </div>
+    </div>
+</div>

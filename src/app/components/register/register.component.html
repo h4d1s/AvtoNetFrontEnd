@@ -1,0 +1,50 @@
+<div class="container">
+<form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>Register</h1>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div class="col-md-6">
+        <label for="firstName" class="form-label">First name</label>
+        <input type="email" class="form-control" id="firstName" formControlName="firstName">
+    </div>
+    <div class="col-md-6">
+      <label for="lastName" class="form-label">Lastname</label>
+      <input type="email" class="form-control" id="lastName" formControlName="lastName">
+    </div>
+    <div class="col-md-6">
+        <label for="username" class="form-label">Username</label>
+        <input type="email" class="form-control" id="username" formControlName="username">
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+    </div>
+    <div class="col-md-6">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <div class="col-md-6">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <div class="col-12">
+      <label for="street" class="form-label">Street</label>
+      <input type="text" class="form-control" id="street" formControlName="street">
+    </div>
+    <div class="col-md-6">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" id="city" formControlName="city">
+    </div>
+    <div class="col-md-6">
+      <label for="phoneNumber" class="form-label">PhoneNumber</label>
+      <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

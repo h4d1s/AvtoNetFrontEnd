@@ -1,0 +1,22 @@
+export class User {
+    firstName: string = ""
+    lastName: string = ""
+    street: string = ""
+    city: string = ""
+    listings: number[] = []
+    id: string = ""
+    userName: string = ""
+    normalizedUserName: string = ""
+    email: string = ""
+    normalizedEmail: string = ""
+    emailConfirmed: boolean = false
+    passwordHash: string = ""
+    securityStamp: string = ""
+    concurrencyStamp: string = ""
+    phoneNumber: string = ""
+    phoneNumberConfirmed: boolean = false
+    twoFactorEnabled: boolean = false
+    lockoutEnd: string = ""
+    lockoutEnabled: boolean = false
+    accessFailedCount: number = 0
+}

@@ -1,0 +1,33 @@
+<div class="container">
+    <form class="row g-3" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{ successMessage }}
+        </div>
+        <div class="col-12">
+            <h1>Profile</h1>
+        </div>
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+        </div>
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+        </div>
+        <div class="col-12">
+            <label for="street" class="form-label">Street</label>
+            <input type="text" class="form-control" id="street" placeholder="1234 Main St" formControlName="street">
+        </div>
+        <div class="col-6">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" placeholder="Apartment, studio, or floor" formControlName="city">
+        </div>
+        <div class="col-md-6">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Update</button>
+        </div>
+    </form>
+</div>

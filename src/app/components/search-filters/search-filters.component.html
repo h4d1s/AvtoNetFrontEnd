@@ -1,0 +1,227 @@
+<div class="container">
+    <div class="card p-4">
+        <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="row row-cols-1 g-3">
+                        <div class="col">
+                            <select ngModel #brandSelect="ngModel" name="brandId" class="form-select" aria-label="Default select example" (change)="onBrandSelectChange($event)">
+                                <option value>Select Brand</option>
+                                <option *ngFor="let brand of brands" [value]="brand.id">
+                                    {{ brand.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select ngModel #modelSelect="ngModel" name="modelId" class="form-select" aria-label="Default select example" [disabled]="isModelSelectDisabled">
+                                <option selected></option>
+                                <option *ngFor="let model of models" [value]="model.id">
+                                    {{ model.name }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row row-cols-1 g-3">
+                        <div class="col">
+                            <div class="input-group">
+                                <select ngModel #priceMin="ngModel" id="priceMin" name="priceMin" class="custom-select form-select">
+                                    <option value>Price from</option>
+                                    <option value="100">from 100 EUR</option>
+                                    <option value="500">from 500 EUR</option>
+                                    <option value="1000">from 1.000 EUR</option>
+                                    <option value="1500">from 1.500 EUR </option>
+                                    <option value="2000">from 2.000 EUR </option>
+                                    <option value="2500">from 2.500 EUR </option>
+                                    <option value="3000">from 3.000 EUR </option>
+                                    <option value="3500">from 3.500 EUR </option>
+                                    <option value="4000">from 4.000 EUR </option>
+                                    <option value="4500">from 4.500 EUR </option>
+                                    <option value="5000">from 5.000 EUR </option>
+                                    <option value="6000">from 6.000 EUR </option>
+                                    <option value="7000">from 7.000 EUR </option>
+                                    <option value="8000">from 8.000 EUR </option>
+                                    <option value="9000">from 9.000 EUR </option>
+                                    <option value="10000">from 10.000 EUR </option>
+                                    <option value="11000">from 11.000 EUR </option>
+                                    <option value="12000">from 12.000 EUR </option>
+                                    <option value="13000">from 13.000 EUR </option>
+                                    <option value="14000">from 14.000 EUR </option>
+                                    <option value="15000">from 15.000 EUR </option>
+                                    <option value="16000">from 16.000 EUR </option>
+                                    <option value="17000">from 17.000 EUR </option>
+                                    <option value="18000">from 18.000 EUR </option>
+                                    <option value="19000">from 19.000 EUR </option>
+                                    <option value="20000">from 20.000 EUR </option>
+                                    <option value="22500">from 22.500 EUR </option>
+                                    <option value="25000">from 25.000 EUR </option>
+                                    <option value="27500">from 27.500 EUR </option>
+                                    <option value="30000">from 30.000 EUR </option>
+                                    <option value="35000">from 35.000 EUR </option>
+                                    <option value="40000">from 40.000 EUR </option>
+                                    <option value="45000">from 45.000 EUR </option>
+                                    <option value="50000">from 50.000 EUR </option>
+                                    <option value="60000">from 60.000 EUR </option>
+                                    <option value="70000">from 70.000 EUR </option>
+                                    <option value="80000">from 80.000 EUR </option>
+                                    <option value="90000">from 90.000 EUR </option>
+                                    <option value="100000">from 100.000 EUR </option>
+                                </select>   
+                                <select ngModel #priceMax="ngModel" name="priceMax" class="custom-select form-select">
+                                    <option value>Price to</option>
+                                    <option value="100">to 100 EUR</option>
+                                    <option value="500">to 500 EUR</option>
+                                    <option value="1000">to 1.000 EUR</option>
+                                    <option value="1500">to 1.500 EUR </option>
+                                    <option value="2000">to 2.000 EUR </option>
+                                    <option value="2500">to 2.500 EUR </option>
+                                    <option value="3000">to 3.000 EUR </option>
+                                    <option value="3500">to 3.500 EUR </option>
+                                    <option value="4000">to 4.000 EUR </option>
+                                    <option value="4500">to 4.500 EUR </option>
+                                    <option value="5000">to 5.000 EUR </option>
+                                    <option value="6000">to 6.000 EUR </option>
+                                    <option value="7000">to 7.000 EUR </option>
+                                    <option value="8000">to 8.000 EUR </option>
+                                    <option value="9000">to 9.000 EUR </option>
+                                    <option value="10000">to 10.000 EUR </option>
+                                    <option value="11000">to 11.000 EUR </option>
+                                    <option value="12000">to 12.000 EUR </option>
+                                    <option value="13000">to 13.000 EUR </option>
+                                    <option value="14000">to 14.000 EUR </option>
+                                    <option value="15000">to 15.000 EUR </option>
+                                    <option value="16000">to 16.000 EUR </option>
+                                    <option value="17000">to 17.000 EUR </option>
+                                    <option value="18000">to 18.000 EUR </option>
+                                    <option value="19000">to 19.000 EUR </option>
+                                    <option value="20000">to 20.000 EUR </option>
+                                    <option value="22500">to 22.500 EUR </option>
+                                    <option value="25000">to 25.000 EUR </option>
+                                    <option value="27500">to 27.500 EUR </option>
+                                    <option value="30000">to 30.000 EUR </option>
+                                    <option value="35000">to 35.000 EUR </option>
+                                    <option value="40000">to 40.000 EUR </option>
+                                    <option value="45000">to 45.000 EUR </option>
+                                    <option value="50000">to 50.000 EUR </option>
+                                    <option value="60000">to 60.000 EUR </option>
+                                    <option value="70000">to 70.000 EUR </option>
+                                    <option value="80000">to 80.000 EUR </option>
+                                    <option value="90000">to 90.000 EUR </option>
+                                    <option value="100000">to 100.000 EUR </option>
+                                </select>  
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                            <select ngModel #yearMin="ngModel" name="yearMin" class="custom-select form-select">
+                                <option value>Year from</option>
+                                <option value="2023">from 2023</option>
+                                <option value="2022">from 2022</option>
+                                <option value="2021">from 2021</option>
+                                <option value="2020">from 2020</option>
+                                <option value="2019">from 2019</option>
+                                <option value="2018">from 2018</option>
+                                <option value="2017">from 2017</option>
+                                <option value="2016">from 2016</option>
+                                <option value="2015">from 2015</option>
+                                <option value="2014">from 2014</option>
+                                <option value="2013">from 2013</option>
+                                <option value="2012">from 2012</option>
+                                <option value="2011">from 2011</option>
+                                <option value="2010">from 2010</option>
+                                <option value="2009">from 2009</option>
+                                <option value="2008">from 2008</option>
+                                <option value="2007">from 2007</option>
+                                <option value="2006">from 2006</option>
+                                <option value="2005">from 2005</option>
+                                <option value="2004">from 2004</option>
+                                <option value="2003">from 2003</option>
+                                <option value="2002">from 2002</option>
+                                <option value="2001">from 2001</option>
+                                <option value="2000">from 2000</option>
+                                <option value="1999">from 1999</option>
+                                <option value="1998">from 1998</option>
+                                <option value="1997">from 1997</option>
+                                <option value="1990">from 1990</option>
+                                <option value="1985">from 1985</option>
+                                <option value="1980">from 1980</option>
+                                <option value="1975">from 1975</option>
+                                <option value="1970">from 1970</option>
+                            </select>
+                            
+                            <select ngModel #yearMax="ngModel" name="yearMax" class="custom-select form-select">
+                                <option value>Year to</option>
+                                <option value="2023">to 2023</option>
+                                <option value="2022">to 2022</option>
+                                <option value="2021">to 2021</option>
+                                <option value="2020">to 2020</option>
+                                <option value="2019">to 2019</option>
+                                <option value="2018">to 2018</option>
+                                <option value="2017">to 2017</option>
+                                <option value="2016">to 2016</option>
+                                <option value="2015">to 2015</option>
+                                <option value="2014">to 2014</option>
+                                <option value="2013">to 2013</option>
+                                <option value="2012">to 2012</option>
+                                <option value="2011">to 2011</option>
+                                <option value="2010">to 2010</option>
+                                <option value="2009">to 2009</option>
+                                <option value="2008">to 2008</option>
+                                <option value="2007">to 2007</option>
+                                <option value="2006">to 2006</option>
+                                <option value="2005">to 2005</option>
+                                <option value="2004">to 2004</option>
+                                <option value="2003">to 2003</option>
+                                <option value="2002">to 2002</option>
+                                <option value="2001">to 2001</option>
+                                <option value="2000">to 2000</option>
+                                <option value="1999">to 1999</option>
+                                <option value="1998">to 1998</option>
+                                <option value="1997">to 1997</option>
+                                <option value="1990">to 1990</option>
+                                <option value="1985">to 1985</option>
+                                <option value="1980">to 1980</option>
+                                <option value="1975">to 1975</option>
+                                <option value="1970">to 1970</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row row-cols-1 g-3">
+                        <div class="col">
+                            <select ngModel #kmMax="ngModel" name="kmMax" class="custom-select form-select">
+                                <option value>Kilometers up to</option>
+                                <option value="5000">to 5000 km</option>
+                                <option value="10000">to 10000 km</option>
+                                <option value="20000">to 20000 km</option>
+                                <option value="25000">to 25000 km</option>
+                                <option value="50000">to 50000 km</option>
+                                <option value="75000">to 75000 km</option>
+                                <option value="100000">to 100000 km</option>
+                                <option value="125000">to 125000 km</option>
+                                <option value="150000">to 150000 km</option>
+                                <option value="200000">to 200000 km</option>
+                                <option value="250000">to 250000 km</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" ngModel #fuelType="ngModel" name="fuelType" class="custom-select form-select" aria-label="Default select example">
+                                <option value>Fuel type</option>
+                                <option value="diesel">Disel</option>
+                                <option value="gasoline">Gasoline</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-search me-1"></i> Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
