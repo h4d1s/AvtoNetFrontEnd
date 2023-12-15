@@ -1,66 +1,70 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{ listing.brand }} - {{ listing.model }}</h1>
+    <app-spinner [isLoading]="isLoading"></app-spinner>
+    
+    <ng-container *ngIf="!isLoading">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ listing.brand }} - {{ listing.model }}</h1>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-9">
-            <img src="{{ listing.imagePath }}" class="d-block mb-3 img-fluid" alt="">
+        <div class="row">
+            <div class="col-md-9">
+                <img src="{{ listing.imagePath }}" class="d-block mb-3 img-fluid" alt="">
 
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <th>Year of production</th>
-                        <td>{{ listing.yearOfProduction }}</td>
-                    </tr>
-                    <tr>
-                        <th>Mileage</th>
-                        <td>{{ listing.mileage }}</td>
-                    </tr>
-                    <tr>
-                        <th>Fuel Type</th>
-                        <td>{{ listing.fuelType }}</td>
-                    </tr>
-                    <tr>
-                        <th>Gearbox</th>
-                        <td>{{ listing.gearbox }}</td>
-                    </tr>
-                    <tr>
-                        <th>Year of production</th>
-                        <td>{{ listing.yearOfProduction }}</td>
-                    </tr>
-                    <tr>
-                        <th>Color</th>
-                        <td>{{ listing.color }}</td>
-                    </tr>
-                    <tr>
-                        <th>Power</th>
-                        <td>{{ listing.power }}</td>
-                    </tr>
-                    <tr>
-                        <th>Engine size</th>
-                        <td>{{ listing.engineSize }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title text-center">
-                        {{ listing.price | currency: 'EUR' }}
-                    </h5>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Year of production</th>
+                            <td>{{ listing.yearOfProduction }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mileage</th>
+                            <td>{{ listing.mileage }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fuel Type</th>
+                            <td>{{ listing.fuelType }}</td>
+                        </tr>
+                        <tr>
+                            <th>Gearbox</th>
+                            <td>{{ listing.gearbox }}</td>
+                        </tr>
+                        <tr>
+                            <th>Year of production</th>
+                            <td>{{ listing.yearOfProduction }}</td>
+                        </tr>
+                        <tr>
+                            <th>Color</th>
+                            <td>{{ listing.color }}</td>
+                        </tr>
+                        <tr>
+                            <th>Power</th>
+                            <td>{{ listing.power }}</td>
+                        </tr>
+                        <tr>
+                            <th>Engine size</th>
+                            <td>{{ listing.engineSize }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            {{ listing.price | currency: 'EUR' }}
+                        </h5>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <i class="bi bi-telephone-fill"></i> {{ listing.userPhone }}
                 </div>
             </div>
-            <div class="text-center">
-                <i class="bi bi-telephone-fill"></i> {{ listing.userPhone }}
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <i class="bi bi-calendar"></i> Published: {{ listing.publishDate | date }}
             </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-12">
-            <i class="bi bi-calendar"></i> Published: {{ listing.publishDate | date }}
-        </div>
-    </div>
+    </ng-container>
 </div>

@@ -8,11 +8,18 @@ import { PaginationComponent } from '../../layout/pagination/pagination.componen
 import { Filter } from '../../models/filter.model';
 import { VehicleBrandService } from '../../services/vehicle-brand.service';
 import { VehicleModelService } from '../../services/vehicle-model.service';
+import { SpinnerComponent } from '../../layout/spinner/spinner.component';
 
 @Component({
   selector: 'app-listing-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule, PaginationComponent],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule,
+    PaginationComponent,
+    SpinnerComponent
+  ],
   templateUrl: './listing-list.component.html',
   styleUrl: './listing-list.component.scss'
 })
@@ -26,6 +33,7 @@ export class ListingListComponent implements OnInit {
   itemsPerPage: number = 10;
   totalItems: number = 0;
   totalPages: number = 0;
+  isLoading: boolean = true;
 
   constructor(
     private router: Router,
@@ -53,6 +61,7 @@ export class ListingListComponent implements OnInit {
   }
 
   fetchData(filterData: any) {
+    this.isLoading = true;
     this.listingService
     .getAll(filterData)
     .subscribe((response: HttpResponse<any>) => {
@@ -65,6 +74,8 @@ export class ListingListComponent implements OnInit {
       this.itemsPerPage = paginationInfo.PageSize;
       this.totalItems = paginationInfo.TotalCount;
       this.totalPages = paginationInfo.TotalPages;
+
+      this.isLoading = false;
     });
   }
 

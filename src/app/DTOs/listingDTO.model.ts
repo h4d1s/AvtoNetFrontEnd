@@ -9,7 +9,7 @@ export class ListingDTO {
     power: number = 0;
     engineSize: number = 0;
     publishDate: string = "";
-    isPublished: boolean = false;
+    isSold: boolean = false;
     brand: string = "";
     model: string = "";
     userPhone: string = "";

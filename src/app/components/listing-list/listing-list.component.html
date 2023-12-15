@@ -1,5 +1,7 @@
 <div class="container">
-    <div class="row">
+    <app-spinner [isLoading]="isLoading"></app-spinner>
+    
+    <div class="row" *ngIf="!isLoading">
         <div class="col-lg-2 col-md-3">
             <div class="row g-1">
                 <button type="button" class="btn btn-sm btn-secondary" *ngIf="filters.yearMin" (click)="filters.yearMin = null; removeFilter()">
@@ -41,7 +43,10 @@
             <div class="row row-cols-1 g-4 mb-4">
                 <div class="col" *ngFor="let listing of listings">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" [ngClass]="{'text-bg-dark': listing.isSold}">
+                            <span class="text-end fw-bold me-2" *ngIf="listing.isSold">
+                                SOLD!
+                            </span>
                             {{ listing.brand }} - {{ listing.model }}
                         </div>
                         <div class="card-body">
