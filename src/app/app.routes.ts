@@ -9,18 +9,19 @@ import { ListingAddComponent } from './components/listing-add/listing-add.compon
 import { ListingEditComponent } from './components/listing-edit/listing-edit.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: SearchFiltersComponent, pathMatch: 'full' },
     { path: 'search-filters', component: SearchFiltersComponent },
     { path: 'listings', component: ListingListComponent },
-    { path: 'listing-add', component: ListingAddComponent },
-    { path: 'listing-edit/:id', component: ListingEditComponent },
     { path: 'listings/:id', component: ListingComponent },
-    { path: 'users', component: UserListComponent },
+    { path: 'listing-add', component: ListingAddComponent, canActivate: [authGuard], data: { roles: ['admin', 'user'] } },
+    { path: 'listing-edit/:id', component: ListingEditComponent, canActivate: [authGuard], data: { roles: ['admin', 'user'] } },
+    { path: 'users', component: UserListComponent, canActivate: [authGuard], data: { roles: ['admin'] } },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard], data: { roles: ['admin', 'user'] } },
+    { path: 'profile', component: ProfileComponent, canActivate: [authGuard], data: { roles: ['admin', 'user'] } },
     { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
